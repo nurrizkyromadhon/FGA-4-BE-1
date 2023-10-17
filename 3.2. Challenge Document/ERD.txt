@@ -1,0 +1,30 @@
+// Use DBML to define your database structure
+// Docs: https://dbml.dbdiagram.io/docs
+
+Table Nasabah {
+  ID_Nasabah integer [primary key]
+  Alamat varchar
+  Nomor_Telepon varchar
+  Tanggal_Lahir DATE 
+}
+
+Table Akun {
+  ID_Akun integer [primary key]
+  ID_Nasabah integer
+  Jenis_Akun varchar
+  Saldo integer
+  Tanggal_Dibuka DATE  
+}
+
+Table Transaksi {
+  ID_Transaksi integer [primary key]
+  ID_Akun integer
+  Tanggal_Transaksi DATE
+  Jumlah integer
+  Jenis_Transaksi varchar  
+}
+
+Ref: Nasabah.ID_Nasabah < Akun.ID_Nasabah
+
+Ref: Akun.ID_Akun < Transaksi.ID_Akun
+
