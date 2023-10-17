@@ -2,6 +2,7 @@
 ## Silver Chapter 3
 
 **NUR RIZKY ROMADHON**
+Github : <https://github.com/nurrizkyromadhon/FGA-4-BE-1>
 **FGA 4 BACK END ENGINEERING KELAS 1**
 
 **SKILL METRICS**
@@ -41,32 +42,39 @@ Sebuah bank ingin membuat sistem untuk melacak informasi nasabah, akun, dan tran
 // Use DBML to define your database structure
 // Docs: <https://dbml.dbdiagram.io/docs>
 
-Table Nasabah {
-  ID_Nasabah integer [primary key]
-  Alamat varchar
-  Nomor_Telepon varchar
-  Tanggal_Lahir DATE
+Table nasabah {
+  id integer [primary key]
+  nama varchar
+  alamat varchar
+  kota varchar  
+  nomor_telepon varchar
+  tanggal_lahir DATE
+  jenis_kelamin varchar
+  created_at timestamp
+  update_at timestamp
 }
 
-Table Akun {
-  ID_Akun integer [primary key]
-  ID_Nasabah integer
-  Jenis_Akun varchar
-  Saldo integer
-  Tanggal_Dibuka DATE  
+Table akun {
+  id integer [primary key]
+  id_nasabah integer
+  jenis_akun varchar
+  saldo integer
+  tanggal_dibuka DATE
+  created_at timestamp
+  update_at timestamp  
 }
 
-Table Transaksi {
-  ID_Transaksi integer [primary key]
-  ID_Akun integer
-  Tanggal_Transaksi DATE
-  Jumlah integer
-  Jenis_Transaksi varchar  
+Table transaksi {
+  id integer [primary key]
+  id_akun integer
+  tanggal_transaksi DATE
+  nilai_transaksi integer
+  jenis_transaksi varchar  
 }
 
-Ref: Nasabah.ID_Nasabah < Akun.ID_Nasabah
+Ref: nasabah.id < akun.id_nasabah
 
-Ref: Akun.ID_Akun < Transaksi.ID_Akun
+Ref: akun.id < transaksi.id_akun
 
 
 
